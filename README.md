@@ -1,0 +1,5 @@
+# _R2O_
+
+A EPIK SCRIPT HUB NO SKIDDING SCRIPTMASTER
+
+![README.md](https://user-images.githubusercontent.com/111374516/224505653-e78c11f2-97da-42d9-ae79-127a6f775176.JPEG)
