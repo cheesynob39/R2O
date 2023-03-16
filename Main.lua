@@ -8,13 +8,13 @@ Method = "GET"
 
 })
 
-if Link.SuccessCode ~= 404 then
+if Link.Success == true then
 
    loadstring(Link.Body)()
     
 else
     
-    if Request.SuccessCode == 404 and game.PlaceId == 11520107397 or game.PlaceId == 9015014224 then
+    if Link.Success == false and game.PlaceId == 11520107397 or game.PlaceId == 9015014224 then
         
         loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R2O/main/Games/6403373529.lua"))()
         
