@@ -6,9 +6,9 @@ Url = "https://raw.githubusercontent.com/cheesynob39/R2O/main/Games/".. game.Pla
     
 Method = "GET"
 
-)}
+})
 
-if Request.SuccessCode ~= 404 then
+if Link.SuccessCode ~= 404 then
 
    loadstring(Link.Body)()
     
@@ -26,5 +26,3 @@ else
     
 
 end
-
-
