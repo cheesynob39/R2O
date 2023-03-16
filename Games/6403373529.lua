@@ -1,4 +1,6 @@
 
+	
+	
     if not game:IsLoaded() then
         
         game.Loaded:Wait()
@@ -93,6 +95,32 @@
                 end
 
     end)
+    
+    	Combat2:CreateToggle("Infinite Reverse", function(bool)
+	    
+	    autoReverse = bool
+	    
+	    if bool == true then
+	        
+	    while autoReverse do
+	       
+	    task.wait()
+	    
+	    local Character = workspace:WaitForChild(game.Players.LocalPlayer.Name)
+	    
+	    if game.Players.LocalPlayer.leaderstats.Glove.Value == "Reverse" and Character:FindFirstChild("entered") then
+	        
+	        task.wait(5.1)
+	        
+        game:GetService("ReplicatedStorage"):WaitForChild("ReverseAbility"):FireServer()
+
+	        
+	    end
+
+	    end
+	    
+        end
+	end)
     
     Farms1:CreateToggle("Universal Slap Farm", function(bool)
 
@@ -332,6 +360,8 @@
                 
             end
     end)
+
+
     
     Perks1:CreateToggle("Anti Hallow-Jack", function(bool)
 
