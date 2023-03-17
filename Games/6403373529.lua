@@ -953,25 +953,7 @@
         
     end)
     
-    Fun1:CreateToggle("Spam Ping Pong", function(bool)
-
-        spamBall = bool
-        
-        if bool == true then
-           
-        while spamBall and task.wait() do
-        
-        if getGlove() == "Ping Pong" then
-            
-            game.ReplicatedStorage.GeneralAbility:FireServer()
-            
-        end
-        
-        end
-        
-        end
-        
-    end)
+    -- Fun1:CreateToggle("Spam Ping Pong", function(bool) spamBall = bool if bool == true then while spamBall and task.wait() do if getGlove() == "Ping Pong" then game.ReplicatedStorage.GeneralAbility:FireServer() end end end end)
     
     Combat2:CreateToggle("Whirlwind Godmode", function(bool)
         
