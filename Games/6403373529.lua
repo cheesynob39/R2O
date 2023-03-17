@@ -96,7 +96,7 @@
 
     end)
     
-    Fun2:CreateToggle("Infinite Reverse", function(bool)
+    Combat2:CreateToggle("Infinite Reverse", function(bool)
 	    
 	    autoReverse = bool
 	    
@@ -972,7 +972,7 @@
         
     end)
     
-    Fun1:CreateToggle("Spam Whirlwind", function(bool)
+    Combat2:CreateToggle("Whirlwind Godmode", function(bool)
         
     autoWhirl = bool
     
@@ -980,7 +980,7 @@
     
     while autoWhirl and task.wait() do
 	
-	if getglove() == "Whirlwind" then
+	if getGlove() == "Whirlwind" then
     
         game:GetService("ReplicatedStorage").GeneralAbility:FireServer()
 	
