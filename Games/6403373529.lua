@@ -979,8 +979,12 @@
     if bool == true then
     
     while autoWhirl and task.wait() do
+	
+	if getglove() == "Whirlwind" then
     
         game:GetService("ReplicatedStorage").GeneralAbility:FireServer()
+	
+	end
 
     end
 
