@@ -96,12 +96,12 @@
 
     end)
     
-    	Combat2:CreateToggle("Infinite Reverse", function(bool)
+    Fun2:CreateToggle("Infinite Reverse", function(bool)
 	    
 	    autoReverse = bool
 	    
 	    if bool == true then
-	        
+		
 	    while autoReverse do
 	       
 	    task.wait()
@@ -110,7 +110,7 @@
 	    
 	    if game.Players.LocalPlayer.leaderstats.Glove.Value == "Reverse" and Character:FindFirstChild("entered") then
 	        
-	        task.wait(5.1)
+	    task.wait(6)
 	        
         game:GetService("ReplicatedStorage"):WaitForChild("ReverseAbility"):FireServer()
 
@@ -888,6 +888,7 @@
         
     end)
     
+    
     Fun1:CreateToggle("Spam Error Sound", function(bool)
         
         errorSpam = bool
@@ -968,6 +969,22 @@
         end
         
         end
+        
+    end)
+    
+    Fun1:CreateToggle("Spam Whirlwind", function(bool)
+        
+    autoWhirl = bool
+    
+    if bool == true then
+    
+    while autoWhirl and task.wait() do
+    
+        game:GetService("ReplicatedStorage").GeneralAbility:FireServer()
+
+    end
+
+    end
         
     end)
 
