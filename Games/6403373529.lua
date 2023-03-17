@@ -43,7 +43,7 @@
 	
 	local Combat = Coasting:CreateTab("Combat")
 	local Combat1 = Combat:CreateSection("Main")
-	local Combat2 = Combat:CreateSection("Misc")
+	local Combat2 = Combat:CreateSection("Godmodes")
 	
 	-------------------------------------------
 	
@@ -96,7 +96,7 @@
 
     end)
     
-    Combat2:CreateToggle("Infinite Reverse", function(bool)
+    Combat2:CreateToggle("Reverse Godmode", function(bool)
 	    
 	    autoReverse = bool
 	    
@@ -110,10 +110,11 @@
 	    
 	    if game.Players.LocalPlayer.leaderstats.Glove.Value == "Reverse" and Character:FindFirstChild("entered") then
 	        
-	    task.wait(6)
-	        
-        game:GetService("ReplicatedStorage"):WaitForChild("ReverseAbility"):FireServer()
+            task.wait(5.7)
+            
+            game:GetService("ReplicatedStorage"):WaitForChild("ReverseAbility"):FireServer()
 
+        
 	        
 	    end
 
@@ -332,7 +333,7 @@
             
     end)
     
-    Combat2:CreateToggle("Auto Enter Arena", function(bool)
+    Perks2:CreateToggle("Auto Enter Arena", function(bool)
 
         getgenv().autoJoin = bool
 
@@ -977,17 +978,32 @@
     autoWhirl = bool
     
     if bool == true then
+        
+    game:GetService("ReplicatedStorage").GeneralAbility:FireServer()
     
-    while autoWhirl and task.wait() do
+    task.wait()
+
+    while autoWhirl do
+        
+    task.wait()
 	
+	if game.Players.LocalPlayer.Character:FindFirstChild("entered") then
+	    
 	if getGlove() == "Whirlwind" then
-    
+	    
+        repeat task.wait() until game.Players.LocalPlayer.Character:FindFirstChild("Invincible") == nil
+        
         game:GetService("ReplicatedStorage").GeneralAbility:FireServer()
 	
 	end
+	end
+	
 
     end
-
+    else
+    
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+    
     end
         
     end)
