@@ -1,6 +1,4 @@
 
-	
-	
     if not game:IsLoaded() then
         
         game.Loaded:Wait()
@@ -331,6 +329,24 @@
         
         end
             
+    end)
+    
+    Perks2:CreateToggle("Anti Admins", function(bool)
+    
+    antiAdmins = bool
+    
+    if bool == true then
+           
+        game.Players.PlayerAdded:Connect(function(Plr)
+            
+            if Plr:GetRankInGroup(9950771) and 7 <= Plr:GetRankInGroup(9950771) and antiAdmins then
+                game.Players.LocalPlayer:Kick("Admin Cummer Detected 🔥")
+            end
+            
+        end)
+        
+    end
+        
     end)
     
     Perks2:CreateToggle("Auto Enter Arena", function(bool)
