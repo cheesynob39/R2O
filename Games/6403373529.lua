@@ -7,6 +7,7 @@
 
 	
     
+
     local Character = game.Players.LocalPlayer.Character
     
     local Time = 0
