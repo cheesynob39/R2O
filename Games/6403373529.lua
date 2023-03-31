@@ -1106,7 +1106,7 @@
         
         if setclipboard then
             
-            setclipboard("https://discord.com/invite/VpWkYvGxMn")
+            setclipboard("https://discord.gg/zty372wma5")
             
         end
         
