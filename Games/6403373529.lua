@@ -120,6 +120,40 @@
 	    
         end
 	end)
+
+    Farms1:CreateButton("OP SLAP FARM [ GODS HAND ]". function(bool)
+
+    AllahFarm = bool
+
+    if bool == true then
+
+        while AllahFarm do
+            
+            task.wait()
+
+            if getGlove() == "God's hand" and game.Players.LocalPlayer.Character:FindFirstChild("entered") then
+            
+            pcall(function()
+            
+                for i,v in pairs(game.Players:GetPlayers()) do
+                
+                    if v ~= game.Players.LocalPlayer and v.Character ~= nil and v.Character:FindFirstChild("Head") and v.Character:FindFirstChild("rock") == nil and v.Character.Head:FindFirstChild("UnoReverseCard") == nil then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Godshand"):FireServer(v.Character.Head)
+                    end
+                 
+                end
+            
+            end)
+    
+        end
+
+        end
+    
+        end
+
+    	end
+
+    end)
     
     Farms1:CreateToggle("Universal Slap Farm", function(bool)
 
