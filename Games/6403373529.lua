@@ -21,41 +21,41 @@
         
     end
     
-    local Gloves = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R20-EXPLOITER/main/Files/Gloves.lua"))()
+   local Gloves = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R20-EXPLOITER/main/Files/Gloves.lua"))()
 
-    local Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R20-EXPLOITER/main/Files/Functions.lua"))()
+   local Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R20-EXPLOITER/main/Files/Functions.lua"))()
 
-	local function getGlove()
+   local function getGlove()
 	    
-	    return game.Players.LocalPlayer.leaderstats.Glove.Value
+       return game.Players.LocalPlayer.leaderstats.Glove.Value
 	    
-	end
+    end
 	
-	local Coasting = loadstring(game:HttpGet(("https://raw.githubusercontent.com/cheesynob39/Coasting/main/Source.lua")))()
+    local Coasting = loadstring(game:HttpGet(("https://raw.githubusercontent.com/cheesynob39/Coasting/main/Source.lua")))()
 	
-	local Farms = Coasting:CreateTab("Autofarms")
-	local Farms1 = Farms:CreateSection("Slaps")
-	local Farms2 = Farms:CreateSection("Badges")
+    local Farms = Coasting:CreateTab("Autofarms")
+    local Farms1 = Farms:CreateSection("Slaps")
+    local Farms2 = Farms:CreateSection("Badges")
 	
-	-------------------------------------------
+    -------------------------------------------
 	
-	local Combat = Coasting:CreateTab("Combat")
-	local Combat1 = Combat:CreateSection("Main")
-	local Combat2 = Combat:CreateSection("Godmodes")
+    local Combat = Coasting:CreateTab("Combat")
+    local Combat1 = Combat:CreateSection("Main")
+    local Combat2 = Combat:CreateSection("Godmodes")
 	
-	-------------------------------------------
+    -------------------------------------------
 	
-	local Perks = Coasting:CreateTab("Perks")
-	local Perks1 = Perks:CreateSection("Anti Stuff")
-	local Perks2 = Perks:CreateSection("Other Stuff")
+     local Perks = Coasting:CreateTab("Perks")
+     local Perks1 = Perks:CreateSection("Anti Stuff")
+     local Perks2 = Perks:CreateSection("Other Stuff")
 
-	-------------------------------------------
+    -------------------------------------------
 	
     local Fun = Coasting:CreateTab("Fun")
     local Fun1 = Fun:CreateSection("Trolling")
     local Fun2 = Fun:CreateSection("Gloves")
 	
-	-------------------------------------------
+    -------------------------------------------
     
     local Credits = Coasting:CreateTab("Credits")
     local Credits1 = Credits:CreateSection("Coding")
@@ -94,7 +94,7 @@
 
     end)
     
-    Combat2:CreateToggle("Reverse Godmode", function(bool)
+   Combat2:CreateToggle("Reverse Godmode", function(bool)
 	    
 	    autoReverse = bool
 	    
@@ -121,34 +121,6 @@
         end
 	end)
 
-Farms1:CreateToggle("Gods Hand Farm", function(bool)
-        AllahFarm = bool
-
-        if bool == true then
-
-            while AllahFarm do
-
-                task.wait()
-
-                if game.Players.LocalPlayer.leaderstats.Glove.Value == "God's hand" and game.Players.LocalPlayer.Character:FindFirstChild("entered") then
-
-                    pcall(function()
-
-                        for i,v in pairs(game.Players:GetPlayers()) do
-                            if v ~= game.Players.LocalPlayer and v.Character ~= nil and v.Character:FindFirstChild("Head") and v.Character:FindFirstChild("rock") == nil and v.Character.Head:FindFirstChild("UnoReverseCard") == nil then
-                                game:GetService("ReplicatedStorage"):WaitForChild("Godshand"):FireServer(v.Character.Head)
-                            end
-
-                        end
-                    
-                    end)
-                
-                end
-            
-            end
-        
-        end
-end)
     
     Farms1:CreateToggle("Universal Slap Farm", function(bool)
 
