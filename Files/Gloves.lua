@@ -103,9 +103,14 @@
     ["Dominance"] = game.ReplicatedStorage.DominanceHit,
     ["Link"] = game.ReplicatedStorage.LinkHit,
     ["Custom"] = game.ReplicatedStorage.CustomHit,
+    
+    ----------------------------------------
+
     ["Sparky"] = game.ReplicatedStorage.HtStun,
     ["Boogie"] = game.ReplicatedStorage.HtStun,
-    
+    ["Stun"] = game.ReplicatedStorage.HtStun,
+    ["Coil"] = game.ReplicatedStorage.HtStun,
+
     ----------------------------------------
     
     ["Mitten"] = game.ReplicatedStorage.MittenHit,
