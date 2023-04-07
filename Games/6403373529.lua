@@ -15,6 +15,20 @@
 
     task.wait()
     
+local bypass;
+    bypass = hookmetamethod(game, "__namecall", function(method, ...) 
+        if getnamecallmethod() == "FireServer" and method == game.ReplicatedStorage.Ban then
+            return
+        elseif getnamecallmethod() == "FireServer" and method == game.ReplicatedStorage.AdminGUI then
+            return
+        elseif getnamecallmethod() == "FireServer" and method == game.ReplicatedStorage.WalkSpeedChanged then
+            return
+        end
+        return bypass(method, ...)
+    end)
+    
+    task.wait()
+    
     if setfpscap then
         
         setfpscap(1269)
@@ -51,9 +65,9 @@
 
     -------------------------------------------
 	
-    local Fun = Coasting:CreateTab("Fun")
-    local Fun1 = Fun:CreateSection("Trolling")
-    local Fun2 = Fun:CreateSection("Gloves")
+    local Plr = Coasting:CreateTab("Player")
+    local Plr1 = Plr:CreateSection("Local")
+    local Plr2 = Plr:CreateSection("FE")
 	
     -------------------------------------------
     
@@ -906,8 +920,48 @@
         
     end)
     
+    Plr1:CreateSlider("Walkspeed", 20, 300, 20, false, function(WS)
+        
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = WS
+        
+        WS1 = WS
+        
+    end)
     
-    Fun1:CreateToggle("Spam Error Sound", function(bool)
+    Plr1:CreateToggle("Auto Set WalkSpeed", function(bool)
+        autoSet1 = bool
+        if bool == true then
+            while autoSet1 do
+                task.wait()
+                local Character = workspace:WaitForChild(game.Players.LocalPlayer.Name)
+                if Character:FindFirstChild("Humanoid") ~= nil and Character.Humanoid.WalkSpeed ~= WS1 then
+                    Character:FindFirstChild("Humanoid").WalkSpeed = WS1
+                end
+            end
+        end
+    end)
+    
+    Plr1:CreateSlider("Jump Power", 50, 300, 50, false, function(JP)
+        
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = JP
+        
+        WS2 = JP
+        
+    end)
+    
+    Plr1:CreateToggle("Auto Set JumpPower", function(bool)
+        autoSet2 = bool
+        if bool == true then
+            while autoSet2 do
+                task.wait()
+                local Character = workspace:WaitForChild(game.Players.LocalPlayer.Name)
+                if Character:FindFirstChild("Humanoid") ~= nil and Character.Humanoid.JumpPower ~= WS2 then
+                    Character:FindFirstChild("Humanoid").JumpPower = WS2
+                end
+            end
+        end
+    end)
+    Plr2:CreateToggle("Spam Error Sound", function(bool)
         
         errorSpam = bool
         
@@ -924,7 +978,7 @@
         
     end)
     
-    Fun1:CreateToggle("Spam Thanos Sound", function(bool)
+    Plr2:CreateToggle("Spam Thanos Sound", function(bool)
 
         autoThanos = bool
         
@@ -945,30 +999,7 @@
         end
         
     end)
-    
-    Fun1:CreateToggle("Spam Sleep", function(bool)
-        
-        spamSleep = bool
-        
-        if bool == true then
-            
-            while spamSleep do
-                
-                task.wait()
-                
-                if getGlove() == "ZZZZZZZ" then
-                    
-                    task.wait(.1)
-                    
-                    game:GetService("ReplicatedStorage").ZZZZZZZSleep:FireServer()
-                    
-                end
-                
-            end
-            
-        end
-        
-    end)
+
     
     -- Fun1:CreateToggle("Spam Ping Pong", function(bool) spamBall = bool if bool == true then while spamBall and task.wait() do if getGlove() == "Ping Pong" then game.ReplicatedStorage.GeneralAbility:FireServer() end end end end)
     
@@ -1007,81 +1038,8 @@
         
     end)
 
-    Fun2:CreateToggle(" Golden  Effect [FE] ", function(bool)
-        
-        autoGod = bool
-        
-        if bool == true then
-            
-            game.Players.LocalPlayer.CharacterAdded:Connect(function()
-                
-                if autoGod == true and 2500 <= game.Players.LocalPlayer.leaderstats.Slaps.Value then
-                    
-                    task.wait()
-                    
-                    game.ReplicatedStorage.Ungoldify:FireServer(true)
-                    
-                    task.wait(.1)
-                    
-                    local gloveClick = game.Players.LocalPlayer.leaderstats.Glove.Value
-                    
-                    task.wait(.2)
-                    
-                    fireclickdetector(game.Workspace.Lobby.Golden.ClickDetector)
-                    
-                    task.wait(.2)
-                    
-                    game.ReplicatedStorage.Goldify:FireServer(true)
-                    
-                    task.wait(.2)
-                    
-                    fireclickdetector(game.Workspace.Lobby[gloveClick].ClickDetector)
-                    
-                end
-                
-            end)
-            
-        end
-    
-    end)
-    
-    Fun2:CreateToggle("Auto Invis", function(bool)
-        
-        autoInvis = bool
-        
-        if bool == true then
-            
-            game.Players.LocalPlayer.CharacterAdded:Connect(function()
-                
-                if autoInvis == true and 666 <= game.Players.LocalPlayer.leaderstats.Slaps.Value then
-                    
-                    task.wait()
-                    
-                    game.ReplicatedStorage.Ghostinvisibilitydeactivated:FireServer()
-                    
-                    task.wait(.1)
-                    
-                    local gloveClick = game.Players.LocalPlayer.leaderstats.Glove.Value
-                    
-                    task.wait(.2)
-                    
-                    fireclickdetector(game.Workspace.Lobby.Ghost.ClickDetector)
-                    
-                    task.wait(.2)
-                    
-                    game.ReplicatedStorage.Ghostinvisibilityactivated:FireServer()
-                    
-                    task.wait(.2)
-                    
-                    fireclickdetector(game.Workspace.Lobby[gloveClick].ClickDetector)
-                    
-                end
-                
-            end)
-            
-        end
-    
-    end)
+
+
 
     Credits1:CreateButton("Anakin#3568", function()
         
