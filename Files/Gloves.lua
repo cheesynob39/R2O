@@ -31,6 +31,8 @@
     ["Rattlebones"] = game.ReplicatedStorage.GeneralHit,
     ["Chain"] = game.ReplicatedStorage.GeneralHit,
     ["Ping Pong"] = game.ReplicatedStorage.GeneralHit,
+    ["Whirlwind"] = game.ReplicatedStorage.GeneralHit,
+    
     ----------------------------------------
     
     ["Diamond"] = game.ReplicatedStorage.DiamondHit,
@@ -101,7 +103,8 @@
     ["Dominance"] = game.ReplicatedStorage.DominanceHit,
     ["Link"] = game.ReplicatedStorage.LinkHit,
     ["Custom"] = game.ReplicatedStorage.CustomHit,
-
+    ["Sparky"] = game.ReplicatedStorage.HtStun,
+    ["Boogie"] = game.ReplicatedStorage.HtStun,
     
     ----------------------------------------
     
