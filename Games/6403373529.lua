@@ -108,7 +108,7 @@ local bypass;
                     
                     repeat task.wait()
                         
-                    until os.time() - db >= 5.3
+                    until os.time() - tick >= 5.3
                     
                     db = false
                     
