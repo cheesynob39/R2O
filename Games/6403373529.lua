@@ -5,9 +5,7 @@
         
     end
 
-    local Character = game.Players.LocalPlayer.Character
-    
-    local Time = 0
+    local db
 
     task.wait()
 
@@ -77,7 +75,55 @@ local bypass;
     
     Farms2:CreateToggle("Bob Farm", function(bool)
         
-        print("B E I N G  F I X E D")
+        bobFarm = bool
+        
+        if bool == true then
+            
+            while bobFarm do
+                
+                task.wait()
+                
+                    if getGlove() == "Replica" and bobFarm and not db and not game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 2125950512) then
+    
+                    if not db then
+                        
+                    game.ReplicatedStorage.Duplicate:FireServer()
+                    
+                    else
+                        
+                        repeat task.wait()
+                            
+                        until not db
+                        
+                        game.ReplicatedStorage.Duplicate:FireServer()
+
+                        
+                    end
+                    
+                    task.wait()
+                    
+                    db = true
+                    
+                    tick = os.time()
+                    
+                    repeat task.wait()
+                        
+                    until os.time() - db >= 5.3
+                    
+                    db = false
+                    
+                    end
+
+            end
+            
+        else
+            
+            db = true
+            
+            task.wait(5.1)
+            
+            db = false
+        end
         
     end)
     
