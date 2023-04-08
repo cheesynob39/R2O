@@ -78,51 +78,29 @@ local bypass;
         bobFarm = bool
         
         if bool == true then
-            
+           
             while bobFarm do
                 
                 task.wait()
                 
-                    if getGlove() == "Replica" and bobFarm and not db and not game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 2125950512) then
-    
-                    if not db then
-                        
-                    game.ReplicatedStorage.Duplicate:FireServer()
-                    
-                    else
-                        
-                        repeat task.wait()
-                            
-                        until not db
-                        
-                        game.ReplicatedStorage.Duplicate:FireServer()
+                    if getGlove() == "Replica" and bobFarm and not game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 2125950512) then
 
-                        
-                    end
-                    
+                    game.ReplicatedStorage.Duplicate:FireServer() -- dont retoggle u fucking retards
+
                     task.wait()
-                    
-                    db = true
                     
                     tick = os.time()
                     
                     repeat task.wait()
                         
-                    until os.time() - tick >= 5.3
-                    
-                    db = false
+                    until os.time() - tick >= 5.1
                     
                     end
-
             end
             
-        else
+            else
             
-            db = true
-            
-            task.wait(5.1)
-            
-            db = false
+            task.wait(10.2)
         end
         
     end)
