@@ -98,6 +98,6 @@ end)
 print("----------------------------------------")
 
 for x,v in pairs(Anims) do
-    print("/e ".. x)
+    print("/e".. x)
 end
 
