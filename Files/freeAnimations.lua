@@ -54,7 +54,7 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
             Anims["Headless"]:Play()
             ogP = game.Players.LocalPlayer.Character.HumanoidRootPart.Position   
         end
-    elseif string.lower(msg) == "/e laugh" then
+    elseif string.lower(msg) == "/e rofl" then
             if Anims["L"].IsPlaying or Anims["Groove"].IsPlaying or Anims["Helicopter"].IsPlaying or Anims["Floss"].IsPlaying or Anims["Kick"].IsPlaying or Anims["Headless"].IsPlaying or Anims["Laugh"].IsPlaying or Anims["Parker"].IsPlaying or Anims["Thriller"].IsPlaying or Anims["Spasm"].IsPlaying then
             Anims["L"]:Stop(); Anims["Groove"]:Stop(); Anims["Helicopter"]:Stop(); Anims["Floss"]:Stop(); Anims["Kick"]:Stop(); Anims["Headless"]:Stop(); Anims["Laugh"]:Stop(); Anims["Parker"]:Stop(); Anims["Thriller"]:Stop(); Anims["Spasm"]:Stop()
         else
