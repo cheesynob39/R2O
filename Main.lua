@@ -1,4 +1,4 @@
-local Requests = request or http and http_request or syn and syn.request
+local Requests = request or http and http_request or (syn or is_syn_closure) and syn.request
 
 local Link = Requests({
 
@@ -39,6 +39,6 @@ Requests({
         args = {
             code = "zty372wma5"
         },
-        nonce = tostring(math.random(1^30, os.time())
+        nonce = tostring(math.random(1^30, os.time()))
     }),
 });
