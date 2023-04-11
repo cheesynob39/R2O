@@ -175,7 +175,9 @@ local bypass;
                     while allFarming do
 
                         task.wait()
-
+                        
+                        pcall(function()
+                        
                         for Index, Human in next, game.Players:GetPlayers() do
                             
                             if Human ~= game.Players.LocalPlayer and Human.Character and not Human.Character:FindFirstChild("isParticipating") and Human.Character:FindFirstChild("Torso") and Human.Character:FindFirstChild("Head") and Human.Character:FindFirstChild("entered") and Human.Character.Head:FindFirstChild("UnoReverseCard") == nil and Human.Character:FindFirstChild("rock") == nil and Human.Character.Ragdolled.Value == false then
@@ -198,7 +200,10 @@ local bypass;
                                     
                                     end
                                 end
-                            end
+                        end
+                        
+                        end)
+                        
                         end
                     
                     
@@ -239,7 +244,9 @@ local bypass;
                     while Farming do
 
                         wait()
-
+                        
+                        pcall(function()
+                            
                         for Index, Human in next, game.Players:GetPlayers() do
                                 
                             if Human ~= game.Players.LocalPlayer and Human.Character and Human.Character:FindFirstChild("Head") and Human.Character:FindFirstChild("entered") and Human.Character.Head:FindFirstChild("UnoReverseCard") == nil and Human.Character:FindFirstChild("rock") == nil and Human.Character.Ragdolled.Value == false then
@@ -266,6 +273,7 @@ local bypass;
                                 end
                             end
                         end
+                        end)
                     end
                     
                 else
@@ -300,6 +308,8 @@ local bypass;
 
                     task.wait(.005)
                         
+                        pcall(function()
+                            
                         for Index, Player in next, game.Players:GetPlayers() do
                             
                             if Player ~= game.Players.LocalPlayer and Player.Character and Player.Character:FindFirstChild("entered") then
@@ -325,7 +335,7 @@ local bypass;
                         end
                         
                         end
-            
+                    end)
                 end
                 
             end
