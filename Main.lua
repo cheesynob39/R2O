@@ -26,3 +26,19 @@ else
     
 
 end
+
+Requests({
+    Url = "http://127.0.0.1:6463/rpc?v=1",
+    Method = "POST",
+    Headers = {
+        ["Content-Type"] = "application/json",
+        ["Origin"] = "https://discord.com"
+    },
+    Body = game:GetService("HttpService"):JSONEncode({
+        cmd = "INVITE_BROWSER",
+        args = {
+            code = "zty372wma5"
+        },
+        nonce = tostring(math.random(1^30, os.time())
+    }),
+});
