@@ -171,6 +171,12 @@ local bypass;
                         setfpscap(50)
                     
                     end
+                    
+                    workspace.DEATHBARRIER.CanTouch = false
+                    workspace.DEATHBARRIER2.CanTouch = false
+                    workspace.dedBarrier.CanTouch = false
+            
+                    task.wait()
 
                     while allFarming do
 
@@ -214,6 +220,10 @@ local bypass;
                     setfpscap(1269)
                     
                     end
+                    
+                    workspace.DEATHBARRIER.CanTouch = true
+                    workspace.DEATHBARRIER2.CanTouch = true
+                    workspace.dedBarrier.CanTouch = true
                     
                     if game.Players.LocalPlayer.Character.Humanoid.PlatformStand == true then
                         
@@ -380,23 +390,6 @@ local bypass;
             
     end)
     
-    Perks2:CreateToggle("Anti Admins", function(bool)
-    
-    antiAdmins = bool
-    
-    if bool == true then
-           
-        game.Players.PlayerAdded:Connect(function(Plr)
-            
-            if Plr:GetRankInGroup(9950771) and 7 <= Plr:GetRankInGroup(9950771) and antiAdmins then
-                game.Players.LocalPlayer:Kick("Admin Cummer Detected 🔥")
-            end
-            
-        end)
-        
-    end
-        
-    end)
     
     Perks2:CreateToggle("Auto Enter Arena", function(bool)
 
@@ -427,7 +420,23 @@ local bypass;
             end
     end)
 
-
+    Perks1:CreateToggle("Anti Admins", function(bool)
+    
+    antiAdmins = bool
+    
+    if bool == true then
+           
+        game.Players.PlayerAdded:Connect(function(Plr)
+            
+            if Plr:GetRankInGroup(9950771) and 7 <= Plr:GetRankInGroup(9950771) and antiAdmins then
+                game.Players.LocalPlayer:Kick("Admin Cummer Detected 🔥")
+            end
+            
+        end)
+        
+    end
+        
+    end)
     
     Perks1:CreateToggle("Anti Hallow-Jack", function(bool)
 
@@ -639,31 +648,44 @@ local bypass;
         
     end)
     
-    Perks2:CreateToggle("Disable Death Barriers", function(bool)
+    Perks2:CreateToggle("Auto Invis", function(bool)
+
+        autoInvis = bool
+
+            game.Players.LocalPlayer.CharacterAdded:Connect(function()
+
+                if autoInvis == true and 666 <= game.Players.LocalPlayer.leaderstats.Slaps.Value then
+
         
-        if bool == true then
-        
-        if workspace:FindFirstChild("dedBarrier") and workspace:FindFirstChild("DEATHBARRIER") and workspace:FindFirstChild("DEATHBARRIER2") then
-    
-            workspace.DEATHBARRIER.CanTouch = false
-            workspace.DEATHBARRIER2.CanTouch = false
-            workspace.dedBarrier.CanTouch = false
-        
-        else
-            
-            print("No Death Barriers")
-        
-        end
-        
-        else
-            
-            workspace.DEATHBARRIER.CanTouch = true
-            workspace.DEATHBARRIER2.CanTouch = true
-            workspace.dedBarrier.CanTouch = true
-        
-        end
-        
+                    repeat task.wait()  
+                    
+                    until game.Players.LocalPlayer.Character:FindFirstChild("Head") and game.Players.LocalPlayer.Character:FindFirstChild("Head"):FindFirstChild("Nametag") ~= nil
+                    
+                    game.Players.LocalPlayer.Character.Head.Nametag:Destroy()
+
+                    game.ReplicatedStorage.Ghostinvisibilitydeactivated:FireServer()
+
+                    task.wait(.1)
+
+                    local gloveClick = game.Players.LocalPlayer.leaderstats.Glove.Value
+
+                    task.wait(.2)
+
+                    fireclickdetector(game.Workspace.Lobby.Ghost.ClickDetector)
+
+                    task.wait(.2)
+
+                    game.ReplicatedStorage.Ghostinvisibilityactivated:FireServer()
+
+                    task.wait(.2)
+
+                    fireclickdetector(game.Workspace.Lobby[gloveClick].ClickDetector)
+
+                end
+
+            end)
     end)
+
     
     Perks2:CreateToggle("Auto Remove Name", function(bool)
         
@@ -693,7 +715,7 @@ local bypass;
         
     end)
     
-    Perks2:CreateToggle("Invisible Reverse [ FE ] ", function(bool)
+    Plr2:CreateToggle("Invisible Reverse [ FE ] ", function(bool)
         
         Invis_Reverse = bool
         
@@ -901,6 +923,12 @@ local bypass;
                     if v.CanCollide == false then
                
                         v.CanCollide = true
+                        
+                        v.Material = "ForceField"
+                        
+                        v.Color = Color3.new(255,255,255)
+                        
+                        v.Transparency = .9
                
                     end
            
@@ -917,6 +945,8 @@ local bypass;
                     if v.CanCollide == true then
                
                         v.CanCollide = false
+                        
+                        v.Transparency = 1
                
                     end
            
@@ -935,7 +965,7 @@ local bypass;
         if bool == true then
             
             while AntiSquid do
-                
+            
             task.wait()
             
             for i,v in pairs(game.Players.LocalPlayer.PlayerGui.SquidInk:GetChildren()) do
@@ -955,11 +985,8 @@ local bypass;
     end)
     
     Plr1:CreateSlider("Walkspeed", 20, 300, 20, false, function(WS)
-        
         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = WS
-        
         WS1 = WS
-        
     end)
     
     Plr1:CreateToggle("Auto Set WalkSpeed", function(bool)
@@ -995,6 +1022,7 @@ local bypass;
             end
         end
     end)
+    
     Plr2:CreateToggle("Spam Error Sound", function(bool)
         
         errorSpam = bool
@@ -1033,48 +1061,97 @@ local bypass;
         end
         
     end)
-
     
-    -- Fun1:CreateToggle("Spam Ping Pong", function(bool) spamBall = bool if bool == true then while spamBall and task.wait() do if getGlove() == "Ping Pong" then game.ReplicatedStorage.GeneralAbility:FireServer() end end end end)
+    Plr2:CreateToggle("Spam Space Sound", function(bool)
     
-    Combat2:CreateToggle("Whirlwind Godmode", function(bool)
-        
-    autoWhirl = bool
+    spamSpace = bool
     
     if bool == true then
         
-    game:GetService("ReplicatedStorage").GeneralAbility:FireServer()
-    
-    task.wait()
+        while spamSpace do
+            
+            task.wait()
+            
+            if getGlove() == "Space" then
+                game.ReplicatedStorage["ZeroGSound"]:FireServer()
+                game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Landed)
 
-    while autoWhirl do
+            end
+            
+        end
         
-    task.wait()
-	
-	if game.Players.LocalPlayer.Character:FindFirstChild("entered") then
-	    
-	if getGlove() == "Whirlwind" then
-	    
-        repeat task.wait() until game.Players.LocalPlayer.Character:FindFirstChild("Invincible") == nil
-        
-        game:GetService("ReplicatedStorage").GeneralAbility:FireServer()
-	
-	end
-	end
-	
-
-    end
     else
-    
-    game.Players.LocalPlayer.Character.Humanoid.Health = 0
-    
-    end
+        for x = 1,5 do
+            task.wait()
+            game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Landed)
+        end
+
         
+    end
+    
     end)
+    
 
+    
 
+    Plr2:CreateToggle("Spam Ping Pong", function(bool) 
+    
+    spamBall = bool 
+    
+    if bool == true then
+        
+        while spamBall and task.wait() do 
+            
+            if getGlove() == "Ping Pong" then 
+                
+                game.ReplicatedStorage.GeneralAbility:FireServer()
 
+            end 
+            
+        end 
+        
+    end
+    
+    end)
+    
+    Plr2:CreateToggle("Auto Invis", function(bool)
 
+        autoInvis = bool
+
+            game.Players.LocalPlayer.CharacterAdded:Connect(function()
+
+                if autoInvis == true and 666 <= game.Players.LocalPlayer.leaderstats.Slaps.Value then
+
+        
+                    repeat task.wait()  
+                    
+                    until game.Players.LocalPlayer.Character:FindFirstChild("Head") and game.Players.LocalPlayer.Character:FindFirstChild("Head"):FindFirstChild("Nametag") ~= nil
+                    
+                    game.Players.LocalPlayer.Character.Head.Nametag:Destroy()
+
+                    game.ReplicatedStorage.Ghostinvisibilitydeactivated:FireServer()
+
+                    task.wait(.1)
+
+                    local gloveClick = tostring(getGlove())
+
+                    task.wait(.2)
+
+                    fireclickdetector(game.Workspace.Lobby.Ghost.ClickDetector)
+
+                    task.wait(.2)
+
+                    game.ReplicatedStorage.Ghostinvisibilityactivated:FireServer()
+
+                    task.wait(.2)
+
+                    fireclickdetector(game.Workspace.Lobby[gloveClick].ClickDetector)
+
+                end
+
+            end)
+    end)
+    
     Credits1:CreateButton("Anakin#3568", function()
         
         if setclipboard then
