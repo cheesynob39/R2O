@@ -1,4 +1,3 @@
-shared.Plrs = {}
 
 shared.removeBlue = function()
     for i,x in pairs(game.CoreGui:GetDescendants()) do
@@ -11,7 +10,7 @@ end
 shared.addPlayers = function()
     for i, Plr in pairs(game.Players:GetPlayers()) do
         if Plr ~= game.Players.LocalPlayer then
-            table.insert(shared.Plrs, Plr.Name)
+            table.insert(Plrs, Plr.Name)
         end
     end 
 end
