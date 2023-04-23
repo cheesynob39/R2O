@@ -15,6 +15,19 @@ shared.addPlayers = function()
     end 
 end
 
+shared.updatePlayers = function()
+    game.Players.PlayerAdded:Connect(function(Player)
+        if Player ~= game.Players.LocalPlayer then
+            table.insert(Plrs, Player.Name)
+                Drop = Combat2:CreateDropdown("Teleport To ", Plrs, function(Value)
+                    pcall(function()
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace[Value].HumanoidRootPart.CFrame
+                    end)
+                end)
+        end
+    end)
+end
+
 shared.autofarmTab = function()
     for i,x in pairs(game.CoreGui:GetDescendants()) do
         if x:IsA("ImageButton") and x.Name == "AutofarmsTabButton" then
