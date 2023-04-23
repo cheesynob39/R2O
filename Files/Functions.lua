@@ -1,34 +1,32 @@
+shared.Plrs = {}
+
 shared.removeBlue = function()
-
     for i,x in pairs(game.CoreGui:GetDescendants()) do
-    
         if x:IsA("ImageButton") and x.Parent.Name == "TabButtons" then
-        
             firesignal(x.MouseButton1Down)
-        
         end
-    
     end
+end
 
+shared.addPlayers = function()
+    for i, Plr in pairs(game.Players:GetPlayers()) do
+        if Plr ~= game.Players.LocalPlayer then
+            table.insert(shared.Plrs, Plr.Name)
+        end
+    end 
 end
 
 shared.autofarmTab = function()
-    
     for i,x in pairs(game.CoreGui:GetDescendants()) do
-    
         if x:IsA("ImageButton") and x.Name == "AutofarmsTabButton" then
-        
             firesignal(x.MouseButton1Down)
-        
         end
-    
-    end
-        
+    end   
 end
 
 
 shared.createBed = function()
-
+    
     local c = Instance.new("Part")
     c.Name = "Bed [ OvErCrInGe02#0658 ] "
     c.Anchored = true
