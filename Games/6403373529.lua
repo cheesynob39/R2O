@@ -5,8 +5,6 @@
         
     end
 
-    local db
-
     task.wait()
 
     if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 9015014224 then
@@ -29,13 +27,13 @@ local bypass;
     
     if setfpscap then
         
-        setfpscap(1269)
+        setfpscap(12569)
         
     end
     
-   local Gloves = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R20-EXPLOITER/main/Files/Gloves.lua"))()
+   local Gloves = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R2O/main/Files/Gloves.lua"))()
 
-   local Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R20-EXPLOITER/main/Files/Functions.lua"))()
+   local Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R2O/main/Files/Functions.lua"))()
 
    local function getGlove()
 	    
@@ -307,7 +305,25 @@ local bypass;
                 end
 
     end)
-
+    
+    Combat1:CreateToggle("Bully People [ Shukuchi ] ", function(bool)
+        autoShuk = bool
+        if bool == true then
+            while autoShuk do
+                task.wait()
+                pcall(function()
+                if getGlove() == "Shukuchi" then
+                    for i,x in pairs(game.Players:GetPlayers()) do
+                        if x ~= game.Players.LocalPlayer and x.Character and 150 >= (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - x.Character.HumanoidRootPart.Position).Magnitude then
+                            game.ReplicatedStorage.SM:FireServer(x)
+                        end
+                    end
+                end
+                end)
+            end
+        end
+    end)
+    
     Combat1:CreateToggle("Slap Aura", function(bool)
 
         getgenv().SlapAura = bool
@@ -1185,13 +1201,10 @@ local bypass;
     end
 
     shared.removeBlue()
-    
-    task.wait()
-    
+    ------------------
     shared.autofarmTab()
-    
-    task.wait()
-    
+    ------------------
     shared.createBed()
+    ------------------
+    shared.chatPlr()
     
-   
