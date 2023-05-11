@@ -12,12 +12,8 @@ local Anims = {
 }
 
 game.Players.LocalPlayer.CharacterAdded:Connect(function()
-
-    repeat task.wait() 
-        
-    until game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-    
-     Anims = {
+    repeat task.wait()  until game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+    Anims = {
         ["L"] = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):LoadAnimation(game:GetService("ReplicatedStorage").AnimationPack["L"], game.Players.LocalPlayer.Character.Humanoid),
         ["Groove"] = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):LoadAnimation(game:GetService("ReplicatedStorage").AnimationPack["Groove"], game.Players.LocalPlayer.Character.Humanoid),
         ["Helicopter"] = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):LoadAnimation(game:GetService("ReplicatedStorage").AnimationPack["Helicopter"], game.Players.LocalPlayer.Character.Humanoid),
@@ -28,15 +24,10 @@ game.Players.LocalPlayer.CharacterAdded:Connect(function()
         ["Parker"] = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):LoadAnimation(game:GetService("ReplicatedStorage").AnimationPack["Parker"], game.Players.LocalPlayer.Character.Humanoid),
         ["Thriller"] = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):LoadAnimation(game:GetService("ReplicatedStorage").AnimationPack["Thriller"], game.Players.LocalPlayer.Character.Humanoid),
         ["Spasm"] = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):LoadAnimation(game:GetService("ReplicatedStorage").AnimationPack["Spasm"], game.Players.LocalPlayer.Character.Humanoid),
-    }
-    
+      }
 end)
-
     game.Players.LocalPlayer.Character.Humanoid.Health = 0
-
-    repeat task.wait()
-    
-    until game.Players.LocalPlayer.Character ~= nil
+    repeat task.wait() until game.Players.LocalPlayer.Character ~= nil
 
 game.Players.LocalPlayer.Chatted:Connect(function(msg)
         if string.lower(msg) == "/e l" then
@@ -144,9 +135,9 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
                     Anims["L"]:Stop(); Anims["Groove"]:Stop(); Anims["Helicopter"]:Stop(); Anims["Floss"]:Stop(); Anims["Kick"]:Stop(); Anims["Headless"]:Stop(); Anims["Laugh"]:Stop(); Anims["Parker"]:Stop(); Anims["Thriller"]:Stop(); Anims["Spasm"]:Stop()
                 end
             end
-        end
+           end
         end)
-        end)
+     end)
 
     print("----------------------------------------")
 
