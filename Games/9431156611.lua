@@ -307,9 +307,9 @@ if getgenv().Running  then
         
     end)
 	
-   Creators:CreateButton("Anakin#3568",function()
+   Creators:CreateButton("anakinn#3568",function()
        
-       setclipboard("Anakin#3568")
+       setclipboard("anakinn#3568")
        
    end)
    
