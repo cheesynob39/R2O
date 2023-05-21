@@ -1168,11 +1168,11 @@ local bypass;
             end)
     end)
     
-    Credits1:CreateButton("Anakin#3568", function()
+    Credits1:CreateButton("anakinn#3568", function()
         
         if setclipboard then
             
-            setclipboard("Anakin#3568")
+            setclipboard("anakinn#3568")
             
         end
         
