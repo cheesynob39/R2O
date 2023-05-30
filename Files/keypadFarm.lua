@@ -16,7 +16,18 @@ else
 			firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, workspace.Lobby.Teleport1, 1)
 		until game.Players.LocalPlayer.Character:FindFirstChild("entered") ~= nil
 	end)
-	    fireclickdetector(workspace:WaitForChild("Keypad").Buttons:FindFirstChild("Reset").ClickDetector)
+    fireclickdetector(workspace:WaitForChild("Keypad").Buttons:FindFirstChild("Reset").ClickDetector)
+    local digits = tostring((#game.Players:GetPlayers() * 25) + 1100 - 7)
+    for i = 1, #digits do
+        wait(.5)
+        local digit = digits:sub(i, i)
+        fireclickdetector(workspace:WaitForChild("Keypad").Buttons:FindFirstChild(digit).ClickDetector)
+    end
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Keypad.Buttons.Enter.CFrame
+    wait(1)
+    fireclickdetector(workspace:WaitForChild("Keypad").Buttons:FindFirstChild("Enter").ClickDetector)
+    wait(1)
+        fireclickdetector(workspace:WaitForChild("Keypad").Buttons:FindFirstChild("Reset").ClickDetector)
     local digits = tostring((#game.Players:GetPlayers() * 25) + 1100 - 7)
     for i = 1, #digits do
         wait(.5)
