@@ -145,6 +145,15 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
                 end
             end
     end)
+
+    local spamExplode = Combat1:CreateToggle("Explosion Aura [ OP ]", function(bool)
+        spamExplode = bool
+            if spamExplode then
+                while spamExplode and task.wait(.01) do
+                    game:GetService("ReplicatedStorage"):WaitForChild("rhythmevent")
+                end
+            end
+    end)
     
     local killAura = Combat1:CreateToggle("Slap Aura", function(bool)
         slapAura = bool
@@ -191,7 +200,6 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
                 end)
             end
     end)
-    
     
     local autoEnter = Perks2:CreateToggle("Auto Enter Arena", function(bool)
         autoJoin = bool
@@ -396,7 +404,7 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
     local getTycoon = Farms2:CreateButton("Get Tycoon", function()
         if not game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 2129212145) then
             if game.Players.LocalPlayer.Character:FindFirstChild("entered") == nil then    
-                repeat task.wait(.5)              
+                repeat task.wait(.5)   
                     firetouchinterest(game.Players.LocalPlayer.Character:FindFirstChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 0)
                     firetouchinterest(game.Players.LocalPlayer.Character:FindFirstChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 1)          
                 until game.Players.LocalPlayer.Character:FindFirstChild("entered") 
