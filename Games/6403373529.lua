@@ -150,7 +150,7 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
         spamExplode = bool
             if spamExplode then
                 while spamExplode and task.wait(.01) do
-                    game:GetService("ReplicatedStorage"):WaitForChild("rhythmevent")
+                    game:GetService("ReplicatedStorage"):WaitForChild("rhythmevent"):FireServer("AoeExplosion", 86)
                 end
             end
     end)
