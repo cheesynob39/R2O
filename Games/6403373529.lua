@@ -38,9 +38,9 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
     local Combat1 = Combat:CreateSection("Main")
     local Combat2 = Combat:CreateSection("Godmodes")
 	
-     local Perks = Coasting:CreateTab("Perks")
-     local Perks1 = Perks:CreateSection("Anti Stuff")
-     local Perks2 = Perks:CreateSection("Other Stuff")
+    local Perks = Coasting:CreateTab("Perks")
+    local Perks1 = Perks:CreateSection("Anti Stuff")
+    local Perks2 = Perks:CreateSection("Other Stuff")
 	
     local Plr = Coasting:CreateTab("Player")
     local Plr1 = Plr:CreateSection("Local")
@@ -154,7 +154,15 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
                 end
             end
     end)
-    
+	
+    local spamNull = Combat1:CreateToggle("Null Spam", function(bool)
+    	nullSpam = bool
+	    while nullSpam do
+	        game:GetService("ReplicatedStorage").NullAbility:FireServer()
+		task.wait()
+	     end
+    end)
+	
     local killAura = Combat1:CreateToggle("Slap Aura", function(bool)
         slapAura = bool
             if bool == true then
