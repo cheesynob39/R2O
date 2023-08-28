@@ -107,7 +107,6 @@
     ["Slapple"] = game.ReplicatedStorage.SlappleHit,
     ["Disarm"] = game.ReplicatedStorage.DisarmH,
     ["Dominance"] = game.ReplicatedStorage.DominanceHit,
-    ["Nightmare"] = game.ReplicatedStorage.nightmarehit,
     ["rob"] = game.ReplicatedStorage.robhit,
     ["Link"] = game.ReplicatedStorage.LinkHit,
     ["Rhythm"] = game.ReplicatedStorage.rhythmhit,
