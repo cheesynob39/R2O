@@ -31,8 +31,14 @@
     ["Rattlebones"] = game.ReplicatedStorage.GeneralHit,
     ["Chain"] = game.ReplicatedStorage.GeneralHit,
     ["Ping Pong"] = game.ReplicatedStorage.GeneralHit,
+    ["Psycho"] = game.ReplicatedStorage.GeneralHit,
+    ["Kraken"] = game.ReplicatedStorage.GeneralHit,
+    ["Counter"] = game.ReplicatedStorage.GeneralHit,
+    ["Hammer"] = game.ReplicatedStorage.GeneralHit,
+    ["Excavator"] = game.ReplicatedStorage.GeneralHit,
+    ["Slicer"] = game.ReplicatedStorage.GeneralHit,
     ["Whirlwind"] = game.ReplicatedStorage.GeneralHit,
-    
+    ["Home Run"] = game.ReplicatedStorage.GeneralHit,
     ----------------------------------------
     
     ["Diamond"] = game.ReplicatedStorage.DiamondHit,
@@ -101,20 +107,25 @@
     ["Slapple"] = game.ReplicatedStorage.SlappleHit,
     ["Disarm"] = game.ReplicatedStorage.DisarmH,
     ["Dominance"] = game.ReplicatedStorage.DominanceHit,
+    ["Nightmare"] = game.ReplicatedStorage.nightmarehit,
+    ["rob"] = game.ReplicatedStorage.robhit,
     ["Link"] = game.ReplicatedStorage.LinkHit,
+    ["Rhythm"] = game.ReplicatedStorage.rhythmhit,
+    ["Hitman"] = game.ReplicatedStorage.HitmanHit,
+    ["Rojo"] = game.ReplicatedStorage.RojoHit,
+    ["Thor"] = game.ReplicatedStorage.ThorHit,
     ["Custom"] = game.ReplicatedStorage.CustomHit,
+
     
-    ----------------------------------------
-
-    ["Sparky"] = game.ReplicatedStorage.HtStun,
-    ["Boogie"] = game.ReplicatedStorage.HtStun,
-    ["Stun"] = game.ReplicatedStorage.HtStun,
-    ["Coil"] = game.ReplicatedStorage.HtStun,
-
     ----------------------------------------
     
     ["Mitten"] = game.ReplicatedStorage.MittenHit,
     ["Hallow Jack"] = game.ReplicatedStorage.HallowHIT,
+
+    ----------------------------------------
+
+    ["Boogie"] = game.ReplicatedStorage.HtStun,
+    ["Balloony"] = game.ReplicatedStorage.HtStun,
 
     ----------------------------------------
     
