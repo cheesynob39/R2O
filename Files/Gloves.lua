@@ -1,4 +1,10 @@
-    shared.gloveHits = {     
+    shared.gloveHits = {
+    
+    ["Default"] = game.ReplicatedStorage.b,
+    ["Extended"] = game.ReplicatedStorage.b,
+    
+    ----------------------------------------
+     
     ["T H I C K"] = game.ReplicatedStorage.GeneralHit,
     ["Squid"] = game.ReplicatedStorage.GeneralHit,
     ["Gummy"] = game.ReplicatedStorage.GeneralHit,
