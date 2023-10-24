@@ -88,7 +88,27 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
             end
 	end)
 
-    
+    local ccFarm = Farms1:CreateToggle("Candy Corn Farm", function(bool)
+        candyFarm = bool
+            if candyFarm then
+                for i,v in pairs(workspace.CandyCorns:GetDescendants()) do
+                    if v:IsA("TouchTransmitter") and game.Players.LocalPlayer.Character then
+                        firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
+                        task.wait()
+                        firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
+                    end
+                end
+            end
+    end)
+
+    workspace.CandyCorns.DescendantAdded:Connect(function(inst)
+        if candyFarm and inst:IsA("TouchTransmitter") and game.Players.LocalPlayer.Character then
+            firetouchinterest(game.Players.LocalPlayer.Character.Head, inst.Parent, 0)
+            task.wait()
+            firetouchinterest(game.Players.LocalPlayer.Character.Head, inst.Parent, 1)
+        end
+    end)
+
     local slapFarm = Farms1:CreateToggle("Universal Slap Farm", function(bool)
         allFarming = bool
             if bool == true then
