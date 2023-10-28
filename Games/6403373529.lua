@@ -29,7 +29,9 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
    local function getGlove()
        return game.Players.LocalPlayer.leaderstats.Glove.Value
     end
-
+    
+    getgenv().Selected = "Autumn Sprout"
+    
     local Ingredients = {"Autumn Sprout", "Blood Rose", "Blue Crystal", "Dark Root", "Dire Flower","Elder Wood", "Fire Flower", "Glowing Mushroom", "Hazel Lily", "Jade Stone","Lamp Grass", "Mushroom", "Plane Flower", "Red Crystal", "Wild Vine", "Winter Rose"}
 		
     local Farms = Coasting:CreateTab("Autofarms")
@@ -362,14 +364,14 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
         
     end)
 
-    local selectPotion = Perks2:CreateDropdown(" ", Ingredients, 1, function(Potion)
-        selected = Potion
+    local selectPotion = Perks2:CreateDropdown("Ingredient ", Ingredients, 1, function(Potion)
+        getgenv().Selected = Potion
     end)
 
     local getPotion = Perks2:CreateButton("Get Ingredient", function() 
         if game.Players.LocalPlayer.leaderstats.Glove.Value == "Alchemist" then
             pcall(function()
-                game.ReplicatedStorage:WaitForChild("AlchemistEvent"):FireServer("AddItem", selected)
+                game.ReplicatedStorage.AlchemistEvent:FireServer(unpack({"AddItem", getgenv().Selected}))
             end)
         end
     end)
