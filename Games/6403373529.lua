@@ -362,12 +362,12 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
         
     end)
 
-    local selectPotion = Perks2:CreateDropdown("Select Ingredient", Ingredients, 1, function(Potion)
+    local selectPotion = Perks2:CreateDropdown(" ", Ingredients, 1, function(Potion)
         selected = Potion
     end)
 
     local getPotion = Perks2:CreateButton("Get Ingredient", function() 
-        if game.Players.LocalPlayer.leaderstats.Value == "Alchemist" then
+        if game.Players.LocalPlayer.leaderstats.Glove.Value == "Alchemist" then
             pcall(function()
                 game.ReplicatedStorage:WaitForChild("AlchemistEvent"):FireServer("AddItem", selected)
             end)
