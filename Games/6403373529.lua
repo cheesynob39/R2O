@@ -29,6 +29,8 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
    local function getGlove()
        return game.Players.LocalPlayer.leaderstats.Glove.Value
     end
+
+    local Ingredients = {"Autumn Sprout", "Blood Rose", "Blue Crystal", "Dark Root", "Dire Flower","Elder Wood", "Fire Flower", "Glowing Mushroom", "Hazel Lily", "Jade Stone","Lamp Grass", "Mushroom", "Plane Flower", "Red Crystal", "Wild Vine", "Winter Rose"}
 		
     local Farms = Coasting:CreateTab("Autofarms")
     local Farms1 = Farms:CreateSection("Slaps")
@@ -358,6 +360,18 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
             end
         end
         
+    end)
+
+    local selectPotion = Perks2:CreateDropdown("Select Ingredient", Ingredients, 1, function(Potion)
+        selected = Potion
+    end)
+
+    local getPotion = Perks2:CreateButton("Get Ingredient", function() 
+        if game.Players.LocalPlayer.leaderstats.Value == "Alchemist" then
+            pcall(function()
+                game.ReplicatedStorage:WaitForChild("AlchemistEvent"):FireServer("AddItem", selected)
+            end)
+        end
     end)
     
     local DisableCOD = Perks2:CreateToggle("Disable Cube Of Death", function(bool)
