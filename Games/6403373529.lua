@@ -438,7 +438,7 @@ if game.PlaceId == 6403373529 or game
         end
     end)
 
-    local selectPotion = Perks2:CreateDropdown("Potion ", Potions , 1, function(Value)
+    local selectPotion = Perks2:CreateDropdown("Potion ", {"Haste Potion", "Grug Potion", "Nightmare Potion"}, 1, function(Value)
         getgenv().selectedPotion = Value
     end)
 
