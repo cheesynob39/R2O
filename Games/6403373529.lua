@@ -1,11 +1,12 @@
-
 if not game:IsLoaded() then
         
     game.Loaded:Wait()
         
 end
 
-if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 9015014224 then
+if game.PlaceId == 6403373529 or game
+.PlaceId 
+== 11520107397 or game.PlaceId == 9015014224 then
     local bypass;
         bypass = hookmetamethod(game, "__namecall", function(method, ...) 
             if getnamecallmethod() == "FireServer" and method == game.ReplicatedStorage.Ban then
@@ -22,18 +23,25 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
         setfpscap(12569)
     end
 
-   local Gloves = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R2O/main/Files/Gloves.lua"))()
-   local Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R2O/main/Files/Functions.lua"))()
-   local Coasting = loadstring(game:HttpGet(("https://raw.githubusercontent.com/cheesynob39/Coasting/main/Source.lua")))()
+    local Gloves = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R2O/main/Files/Gloves.lua"))()
+    local Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R2O/main/Files/Functions.lua"))()
+    local Coasting = loadstring(game:HttpGet(("https://raw.githubusercontent.com/cheesynob39/Coasting/main/Source.lua")))()
 
-   local function getGlove()
-       return game.Players.LocalPlayer.leaderstats.Glove.Value
+    local function getGlove()
+        return game.Players.LocalPlayer.leaderstats.Glove.Value
     end
     
-    getgenv().Selected = "Autumn Sprout"
-    
+    getgenv().selectedIngredient = "Autumn Sprout"
+    getgenv().selectedPotion = "Haste Potion"
+
+    local deb = false
     local Ingredients = {"Autumn Sprout", "Blood Rose", "Blue Crystal", "Dark Root", "Dire Flower","Elder Wood", "Fire Flower", "Glowing Mushroom", "Hazel Lily", "Jade Stone","Lamp Grass", "Mushroom", "Plane Flower", "Red Crystal", "Wild Vine", "Winter Rose"}
-		
+    local Recipes = {
+        ["Haste Potion"] = {Ingredients[1], Ingredients[10]}, 
+        ["Grug Potion"] = {Ingredients[12]},
+        ["Nightmare Potion"] = {Ingredients[4], Ingredients[4], Ingredients[4]}
+    }
+        
     local Farms = Coasting:CreateTab("Autofarms")
     local Farms1 = Farms:CreateSection("Slaps")
     local Farms2 = Farms:CreateSection("Badges")
@@ -41,15 +49,15 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
     local Combat = Coasting:CreateTab("Combat")
     local Combat1 = Combat:CreateSection("Main")
     local Combat2 = Combat:CreateSection("Godmodes")
-	
+    
     local Perks = Coasting:CreateTab("Perks")
     local Perks1 = Perks:CreateSection("Anti Stuff")
     local Perks2 = Perks:CreateSection("Other Stuff")
-	
+    
     local Plr = Coasting:CreateTab("Player")
     local Plr1 = Plr:CreateSection("Local")
     local Plr2 = Plr:CreateSection("FE")
-	    
+        
     local Credits = Coasting:CreateTab("Credits")
     local Credits1 = Credits:CreateSection("Coding")
     local Credits2 = Credits:CreateSection("I D K")
@@ -78,19 +86,79 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
                 end
             end
     end)
+
+    local fishTimer = Farms2:CreateToggle("Fish Farm", function(bool)
+        fishFarm = bool
+            if bool == true then 
+                if game.Players.LocalPlayer.Character:FindFirstChild("entered") and getGlove() == "ZZZZZZZ" then            
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace["Bed [ OvErCrInGe02#0658 ] "].Bed3.CFrame * CFrame.new(0,0,-1)
+                    task.wait(.5)
+                    game:GetService("ReplicatedStorage").ZZZZZZZSleep:FireServer()
+                else
+                    print("FAILED TO TELEPORT TO SAFE SPOT PLEASE DO IT MANUALLY")
+                end
+                task.wait()
+        
+                while fishFarm and task.wait() do
+                    if getGlove() == "ZZZZZZZ" and workspace:WaitForChild(game.Players.LocalPlayer.Name):FindFirstChild("entered") then
+                        if workspace:WaitForChild(game.Players.LocalPlayer.Name):FindFirstChild("Ragdolled").Value then
+                            task.wait(1)
+                            Time += 1
+                            print("You Have Been Asleep For: " .. Time .. " Seconds. You Have: " .. (3600 - Time) .. " Seconds Left")
+                        else
+                            Time = 0
+                        end
+                    end
+                end
+            else
+                game.Players.LocalPlayer.Character.Humanoid.Health = 0
+            end
+    end)
+
+    local getTycoon = Farms2:CreateButton("Get Tycoon", function()
+        if not game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 2129212145) then
+            if game.Players.LocalPlayer.Character:FindFirstChild("entered") == nil then    
+                repeat task.wait(.5)   
+                    firetouchinterest(game.Players.LocalPlayer.Character:FindFirstChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 0)
+                    firetouchinterest(game.Players.LocalPlayer.Character:FindFirstChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 1)          
+                until game.Players.LocalPlayer.Character:FindFirstChild("entered") 
+            end
+            task.wait()
+            repeat task.wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Arena.Plate.CFrame * CFrame.new(0,-2,0)   
+            until game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 2129212145) 
+            -----------------------------------------------------------------------------------------------------------------------
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Arena.Plate.CFrame * CFrame.new(0,2,0)
+        end
+    end)
+    
+    local getRedacted = Farms2:CreateButton("Get [ REDACTED ] ", function()
+        local Door = 1
+        if not game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 2124847850) and 5000 <= game.Players.LocalPlayer.leaderstats.Slaps.Value then
+            repeat task.wait(.25)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.PocketDimension.Doors[Door].CFrame
+                Door = Door + 1
+                print(Door)
+                wait(5)
+            until game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 2124847850)
+        else 
+            print("YOU ALREADY HAVE [ R E D A C T E D ] !!")
+            print("OR YOU DONT HAVE 5K SLAPS")
+        end
+    end)
     
    local rGOD = Combat2:CreateToggle("Reverse Godmode", function(bool)
-	    autoReverse = bool
-	        if bool == true then
-	            while autoReverse and task.wait() do
-	                local Character = workspace:WaitForChild(game.Players.LocalPlayer.Name)
-	                if game.Players.LocalPlayer.leaderstats.Glove.Value == "Reverse" and Character:FindFirstChild("entered") then
+        autoReverse = bool
+            if bool == true then
+                while autoReverse and task.wait() do
+                    local Character = workspace:WaitForChild(game.Players.LocalPlayer.Name)
+                    if getGlove() == "Reverse" and Character:FindFirstChild("entered") then
                         task.wait(5.7)
                         game:GetService("ReplicatedStorage"):WaitForChild("ReverseAbility"):FireServer()
                     end
-	            end
+                end
             end
-	end)
+    end)
 
     local ccFarm = Farms1:CreateToggle("Candy Corn Farm", function(bool)
         candyFarm = bool
@@ -174,15 +242,15 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
                 end
             end
     end)
-	
+    
     local spamNull = Combat1:CreateToggle("Null Spam", function(bool)
-    	nullSpam = bool
-	    while nullSpam do
-	        game:GetService("ReplicatedStorage").NullAbility:FireServer()
-		task.wait()
-	     end
+        nullSpam = bool
+        while nullSpam do
+            game:GetService("ReplicatedStorage").NullAbility:FireServer()
+        task.wait()
+         end
     end)
-	
+    
     local killAura = Combat1:CreateToggle("Slap Aura", function(bool)
         slapAura = bool
             if bool == true then
@@ -310,6 +378,20 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
                 end)
             end
     end)
+
+    local antiSquid = Perks1:CreateToggle("Anti Squid", function(bool)
+        AntiSquid = bool
+            if bool == true then
+                while AntiSquid do
+                    task.wait()
+                    for i,v in pairs(game.Players.LocalPlayer.PlayerGui.SquidInk:GetChildren()) do
+                        if v.Parent then
+                            v:Destroy()
+                        end
+                    end
+                 end
+            end
+    end)
     
     local antiMailPopup = Perks1:CreateToggle("Anti Mail", function(bool)
         antiMail = bool
@@ -345,14 +427,38 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
     end)
 
     local selectIngredient = Perks2:CreateDropdown("Ingredient ", Ingredients, 1, function(Value)
-        getgenv().Selected = Value
+        getgenv().selectedIngredient = Value
     end)
 
-    local getIngredienr = Perks2:CreateButton("Get Ingredient", function() 
-        if game.Players.LocalPlayer.leaderstats.Glove.Value == "Alchemist" then
+    local getIngredient = Perks2:CreateButton("Get Ingredient", function() 
+        if getGlove() == "Alchemist" then
             pcall(function()
-                game.ReplicatedStorage.AlchemistEvent:FireServer(unpack({"AddItem", getgenv().Selected}))
+                game.ReplicatedStorage.AlchemistEvent:FireServer(unpack({"AddItem", getgenv().selectedIngredient}))
             end)
+        end
+    end)
+
+    local selectPotion = Perks2:CreateDropdown("Potion ", Potions , 1, function(Value)
+        getgenv().selectedPotion = Value
+    end)
+
+    local brewPotion = Perks2:CreateButton("Brew Potion (6s)", function()
+        if getGlove() == "Alchemist" and game.Players.LocalPlayer.Character:FindFirstChild("entered") ~= nil then
+            for i = 1, #Recipes[getgenv().selectedPotion] do
+                game.ReplicatedStorage:WaitForChild("AlchemistEvent"):FireServer(unpack({"AddItem", Recipes[getgenv().selectedPotion][i]}))
+                task.wait(.25)
+                game.ReplicatedStorage:WaitForChild("AlchemistEvent"):FireServer(unpack({"MixItem", Recipes[getgenv().selectedPotion][i]}))
+                task.wait(.1)
+                if deb == false then
+                    deb = true
+                    game.ReplicatedStorage:WaitForChild("AlchemistEvent"):FireServer(unpack({"BrewPotion"}))
+                    task.wait(6)
+                    deb = false
+                else
+                    print("you are on cooldown bud, chill..")
+                end
+                    
+            end
         end
     end)
 
@@ -398,81 +504,6 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
             end
     end)
     
-    local invisReverse = Plr2:CreateToggle("Invisible Reverse [ FE ] ", function(bool)
-        Invis_Reverse = bool
-            if bool == true then
-                while Invis_Reverse do
-                    repeat wait(.005) until game.Players.LocalPlayer.Character:FindFirstChild("SelectionBox", 1) and game.Players.LocalPlayer.Character:FindFirstChild("Head"):FindFirstChild("UnoReverseCard")
-                    game.Players.LocalPlayer.Character.Head["UnoReverseCard"]:Destroy()
-                    for i,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                        if v.Name == "SelectionBox" then
-                            v:Destroy()
-                        end
-                    end
-                end
-            end
-    end)
-
-    local fishTimer = Farms2:CreateToggle("Fish Farm", function(bool)
-        fishFarm = bool
-            if bool == true then 
-                if game.Players.LocalPlayer.Character:FindFirstChild("entered") and getGlove() == "ZZZZZZZ" then            
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace["Bed [ OvErCrInGe02#0658 ] "].Bed3.CFrame * CFrame.new(0,0,-1)
-                    task.wait(.5)
-                    game:GetService("ReplicatedStorage").ZZZZZZZSleep:FireServer()
-                else
-                    print("FAILED TO TELEPORT TO SAFE SPOT PLEASE DO IT MANUALLY")
-                end
-                task.wait()
-        
-                while fishFarm and task.wait() do
-                    if getGlove() == "ZZZZZZZ" and workspace:WaitForChild(game.Players.LocalPlayer.Name):FindFirstChild("entered") then
-                        if workspace:WaitForChild(game.Players.LocalPlayer.Name):FindFirstChild("Ragdolled").Value then
-                            task.wait(1)
-                            Time += 1
-                            print("You Have Been Asleep For: " .. Time .. " Seconds. You Have: " .. (3600 - Time) .. " Seconds Left")
-                        else
-                            Time = 0
-                        end
-                    end
-                end
-            else
-                game.Players.LocalPlayer.Character.Humanoid.Health = 0
-            end
-    end)
-
-    local getTycoon = Farms2:CreateButton("Get Tycoon", function()
-        if not game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 2129212145) then
-            if game.Players.LocalPlayer.Character:FindFirstChild("entered") == nil then    
-                repeat task.wait(.5)   
-                    firetouchinterest(game.Players.LocalPlayer.Character:FindFirstChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 0)
-                    firetouchinterest(game.Players.LocalPlayer.Character:FindFirstChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 1)          
-                until game.Players.LocalPlayer.Character:FindFirstChild("entered") 
-            end
-            task.wait()
-            repeat task.wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Arena.Plate.CFrame * CFrame.new(0,-2,0)   
-            until game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 2129212145) 
-            -----------------------------------------------------------------------------------------------------------------------
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Arena.Plate.CFrame * CFrame.new(0,2,0)
-        end
-    end)
-    
-    local getRedacted = Farms2:CreateButton("Get [ REDACTED ] ", function()
-        local Door = 1
-        if not game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 2124847850) and 5000 <= game.Players.LocalPlayer.leaderstats.Slaps.Value then
-            repeat task.wait(.25)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.PocketDimension.Doors[Door].CFrame
-                Door = Door + 1
-                print(Door)
-                wait(5)
-            until game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 2124847850)
-        else 
-            print("YOU ALREADY HAVE [ R E D A C T E D ] !!")
-            print("OR YOU DONT HAVE 5K SLAPS")
-        end
-    end)
-    
     local antiVoid = Perks2:CreateToggle("Anti Void", function(noVoid)
         if noVoid == true then
             for i,v in pairs(game.Workspace:GetDescendants()) do
@@ -491,20 +522,6 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
                 end  
             end
         end
-    end)
-    
-    local antiSquid = Perks1:CreateToggle("Anti Squid", function(bool)
-        AntiSquid = bool
-            if bool == true then
-                while AntiSquid do
-                    task.wait()
-                    for i,v in pairs(game.Players.LocalPlayer.PlayerGui.SquidInk:GetChildren()) do
-                        if v.Parent then
-                            v:Destroy()
-                        end
-                    end
-                 end
-            end
     end)
     
     local walkSpeed = Plr1:CreateSlider("Walkspeed", 20, 300, 20, false, function(WS)
@@ -549,6 +566,21 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
                 while errorSpam do
                     task.wait()
                     game.ReplicatedStorage.ErrorDeath:FireServer()
+                end
+            end
+    end)
+
+    local invisReverse = Plr2:CreateToggle("Invisible Reverse [ FE ] ", function(bool)
+        Invis_Reverse = bool
+            if bool == true then
+                while Invis_Reverse do
+                    repeat wait(.005) until game.Players.LocalPlayer.Character:FindFirstChild("SelectionBox", 1) and game.Players.LocalPlayer.Character:FindFirstChild("Head"):FindFirstChild("UnoReverseCard")
+                    game.Players.LocalPlayer.Character.Head["UnoReverseCard"]:Destroy()
+                    for i,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                        if v.Name == "SelectionBox" then
+                            v:Destroy()
+                        end
+                    end
                 end
             end
     end)
