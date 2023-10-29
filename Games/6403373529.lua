@@ -97,9 +97,7 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
             if candyFarm then
                 for i,v in pairs(workspace.CandyCorns:GetDescendants()) do
                     if v:IsA("TouchTransmitter") and game.Players.LocalPlayer.Character then
-                        firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
-                        task.wait()
-                        firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 1)
+                        v.Parent.CFrame = game.Players.LocalPlayer.Character.PrimaryPart.CFrame
                     end
                 end
             end
@@ -107,9 +105,7 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
 
     workspace.CandyCorns.DescendantAdded:Connect(function(inst)
         if candyFarm and inst:IsA("TouchTransmitter") and game.Players.LocalPlayer.Character then
-            firetouchinterest(game.Players.LocalPlayer.Character.Head, inst.Parent, 0)
-            task.wait()
-            firetouchinterest(game.Players.LocalPlayer.Character.Head, inst.Parent, 1)
+            inst.Parent.CFrame = game.Players.LocalPlayer.Character.PrimaryPart.CFrame
         end
     end)
 
@@ -232,22 +228,6 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
                 end)
             end
     end)
-    
-    local autoEnter = Perks2:CreateToggle("Auto Enter Arena", function(bool)
-        autoJoin = bool
-            if bool == true then
-                while autoJoin do
-                    wait()
-                    repeat task.wait() until game.Players.LocalPlayer.Character
-                    if not game.Players.LocalPlayer.Character:FindFirstChild("entered") and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-                        repeat task.wait(.005)
-                            firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 0)
-                            firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 1)
-                        until game.Players.LocalPlayer.Character:FindFirstChild("entered")
-                    end
-                end
-            end
-    end)
 
     local antiAdmins = Perks1:CreateToggle("Anti Admins", function(bool)
         antiAdmins = bool
@@ -364,16 +344,32 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
         
     end)
 
-    local selectPotion = Perks2:CreateDropdown("Ingredient ", Ingredients, 1, function(Potion)
-        getgenv().Selected = Potion
+    local selectIngredient = Perks2:CreateDropdown("Ingredient ", Ingredients, 1, function(Value)
+        getgenv().Selected = Value
     end)
 
-    local getPotion = Perks2:CreateButton("Get Ingredient", function() 
+    local getIngredienr = Perks2:CreateButton("Get Ingredient", function() 
         if game.Players.LocalPlayer.leaderstats.Glove.Value == "Alchemist" then
             pcall(function()
                 game.ReplicatedStorage.AlchemistEvent:FireServer(unpack({"AddItem", getgenv().Selected}))
             end)
         end
+    end)
+
+    local autoEnter = Perks2:CreateToggle("Auto Enter Arena", function(bool)
+        autoJoin = bool
+            if bool == true then
+                while autoJoin do
+                    wait()
+                    repeat task.wait() until game.Players.LocalPlayer.Character
+                    if not game.Players.LocalPlayer.Character:FindFirstChild("entered") and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+                        repeat task.wait(.005)
+                            firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 0)
+                            firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 1)
+                        until game.Players.LocalPlayer.Character:FindFirstChild("entered")
+                    end
+                end
+            end
     end)
     
     local DisableCOD = Perks2:CreateToggle("Disable Cube Of Death", function(bool)
