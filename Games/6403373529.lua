@@ -1,12 +1,8 @@
 if not game:IsLoaded() then
-        
     game.Loaded:Wait()
-        
 end
 
-if game.PlaceId == 6403373529 or game
-.PlaceId 
-== 11520107397 or game.PlaceId == 9015014224 then
+if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 9015014224 then
     local bypass;
         bypass = hookmetamethod(game, "__namecall", function(method, ...) 
             if getnamecallmethod() == "FireServer" and method == game.ReplicatedStorage.Ban then
@@ -20,7 +16,7 @@ if game.PlaceId == 6403373529 or game
         end)
 
     if setfpscap then 
-        setfpscap(12569)
+        setfpscap(120)
     end
 
     local Gloves = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R2O/main/Files/Gloves.lua"))()
@@ -31,16 +27,18 @@ if game.PlaceId == 6403373529 or game
         return game.Players.LocalPlayer.leaderstats.Glove.Value
     end
     
-    getgenv().selectedIngredient = "Autumn Sprout"
-    getgenv().selectedPotion = "Haste Potion"
+    --[[
+        getgenv().selectedIngredient = "Autumn Sprout"
+        getgenv().selectedPotion = "Haste Potion"
 
-    local deb = false
-    local Ingredients = {"Autumn Sprout", "Blood Rose", "Blue Crystal", "Dark Root", "Dire Flower","Elder Wood", "Fire Flower", "Glowing Mushroom", "Hazel Lily", "Jade Stone","Lamp Grass", "Mushroom", "Plane Flower", "Red Crystal", "Wild Vine", "Winter Rose"}
-    local Recipes = {
-        ["Haste Potion"] = {Ingredients[1], Ingredients[10]}, 
-        ["Grug Potion"] = {Ingredients[12]},
-        ["Nightmare Potion"] = {Ingredients[4], Ingredients[4], Ingredients[4]}
-    }
+        local deb = false
+        local Ingredients = {"Autumn Sprout", "Blood Rose", "Blue Crystal", "Dark Root", "Dire Flower","Elder Wood", "Fire Flower", "Glowing Mushroom", "Hazel Lily", "Jade Stone","Lamp Grass", "Mushroom", "Plane Flower", "Red Crystal", "Wild Vine", "Winter Rose"}
+        local Recipes = {
+            ["Haste Potion"] = {Ingredients[1], Ingredients[10]}, 
+            ["Grug Potion"] = {Ingredients[12]},
+            ["Nightmare Potion"] = {Ingredients[4], Ingredients[4], Ingredients[4]}
+        }
+    --]]
         
     local Farms = Coasting:CreateTab("Autofarms")
     local Farms1 = Farms:CreateSection("Slaps")
@@ -160,22 +158,24 @@ if game.PlaceId == 6403373529 or game
             end
     end)
 
-    local ccFarm = Farms1:CreateToggle("Candy Corn Farm", function(bool)
-        candyFarm = bool
-            if candyFarm then
-                for i,v in pairs(workspace.CandyCorns:GetDescendants()) do
-                    if v:IsA("TouchTransmitter") and game.Players.LocalPlayer.Character then
-                        v.Parent.CFrame = game.Players.LocalPlayer.Character.PrimaryPart.CFrame
+    --[[ 
+        local ccFarm = Farms1:CreateToggle("Candy Corn Farm", function(bool)
+            candyFarm = bool
+                if candyFarm then
+                    for i,v in pairs(workspace.CandyCorns:GetDescendants()) do
+                        if v:IsA("TouchTransmitter") and game.Players.LocalPlayer.Character then
+                            v.Parent.CFrame = game.Players.LocalPlayer.Character.PrimaryPart.CFrame
+                        end
                     end
                 end
+        end)
+    
+        workspace.CandyCorns.DescendantAdded:Connect(function(inst)
+            if candyFarm and inst:IsA("TouchTransmitter") and game.Players.LocalPlayer.Character then
+                inst.Parent.CFrame = game.Players.LocalPlayer.Character.PrimaryPart.CFrame
             end
-    end)
-
-    workspace.CandyCorns.DescendantAdded:Connect(function(inst)
-        if candyFarm and inst:IsA("TouchTransmitter") and game.Players.LocalPlayer.Character then
-            inst.Parent.CFrame = game.Players.LocalPlayer.Character.PrimaryPart.CFrame
-        end
-    end)
+        end)
+    --]]
 
     local slapFarm = Farms1:CreateToggle("Universal Slap Farm", function(bool)
         allFarming = bool
@@ -203,7 +203,7 @@ if game.PlaceId == 6403373529 or game
                     end) 
                 end
             else
-                setfpscap(1269)
+                setfpscap(120)
                 workspace.DEATHBARRIER.CanTouch = true
                 workspace.DEATHBARRIER2.CanTouch = true
                 workspace.dedBarrier.CanTouch = true
@@ -243,17 +243,20 @@ if game.PlaceId == 6403373529 or game
             end
     end)
     
-    local spamNull = Combat1:CreateToggle("Null Spam", function(bool)
-        nullSpam = bool
-        while nullSpam do
-            game:GetService("ReplicatedStorage").NullAbility:FireServer()
-        task.wait()
-         end
-    end)
+    --[[ 
+        local spamNull = Combat1:CreateToggle("Null Spam", function(bool)
+            nullSpam = bool
+            while nullSpam do
+                game:GetService("ReplicatedStorage").NullAbility:FireServer()
+            task.wait()
+            end
+        end)
+    --]]
     
     local killAura = Combat1:CreateToggle("Slap Aura", function(bool)
         slapAura = bool
             if bool == true then
+                game:GetService("StarterGui"):SetCore("SendNotification",{ Title = "[⚠️] WARNING", Text = "DO NOT SLAP MORE THAN 3 PEOPLE ( YOU WILL BE KICKED ) ", Icon = "rbxassetid://"})
                 while slapAura do
                     task.wait(.005)  
                     pcall(function()    
@@ -301,8 +304,8 @@ if game.PlaceId == 6403373529 or game
         antiAdmins = bool
             if bool == true then
                 game.Players.PlayerAdded:Connect(function(Plr)
-                    if Plr:GetRankInGroup(9950771) and 7 <= Plr:GetRankInGroup(9950771) and antiAdmins then
-                        game.Players.LocalPlayer:Kick("Admin Detected 🔥")
+                    if Plr:GetRankInGroup(9950771) and 2 <= Plr:GetRankInGroup(9950771) and antiAdmins then
+                        game.Players.LocalPlayer:Kick("Admin / High Rank Detected 🔥")
                     end
                 end)
             end
@@ -426,41 +429,42 @@ if game.PlaceId == 6403373529 or game
         
     end)
 
-    local selectIngredient = Perks2:CreateDropdown("Ingredient ", Ingredients, 1, function(Value)
-        getgenv().selectedIngredient = Value
-    end)
+    --[[ 
+        local selectIngredient = Perks2:CreateDropdown("Ingredient ", Ingredients, 1, function(Value)
+            getgenv().selectedIngredient = Value
+        end)
 
-    local getIngredient = Perks2:CreateButton("Get Ingredient", function() 
-        if getGlove() == "Alchemist" then
-            pcall(function()
-                game.ReplicatedStorage.AlchemistEvent:FireServer(unpack({"AddItem", getgenv().selectedIngredient}))
-            end)
-        end
-    end)
-
-    local selectPotion = Perks2:CreateDropdown("Potion ", {"Haste Potion", "Grug Potion", "Nightmare Potion"}, 1, function(Value)
-        getgenv().selectedPotion = Value
-    end)
-
-    local brewPotion = Perks2:CreateButton("Brew Potion (6s)", function()
-        if getGlove() == "Alchemist" and game.Players.LocalPlayer.Character:FindFirstChild("entered") ~= nil then
-            for i = 1, #Recipes[getgenv().selectedPotion] do
-                game.ReplicatedStorage:WaitForChild("AlchemistEvent"):FireServer(unpack({"AddItem", Recipes[getgenv().selectedPotion][i]}))
-                task.wait(.25)
-                game.ReplicatedStorage:WaitForChild("AlchemistEvent"):FireServer(unpack({"MixItem", Recipes[getgenv().selectedPotion][i]}))
-                task.wait(.1)
-                if deb == false then
-                    deb = true
-                    game.ReplicatedStorage:WaitForChild("AlchemistEvent"):FireServer(unpack({"BrewPotion"}))
-                    task.wait(6)
-                    deb = false
-                else
-                    print("you are on cooldown bud, chill..")
-                end
-                    
+        local getIngredient = Perks2:CreateButton("Get Ingredient", function() 
+            if getGlove() == "Alchemist" then
+                pcall(function()
+                    game.ReplicatedStorage.AlchemistEvent:FireServer(unpack({"AddItem", getgenv().selectedIngredient}))
+                end)
             end
-        end
-    end)
+        end)
+
+        local selectPotion = Perks2:CreateDropdown("Potion ", {"Haste Potion", "Grug Potion", "Nightmare Potion"}, 1, function(Value)
+            getgenv().selectedPotion = Value
+        end)
+
+        local brewPotion = Perks2:CreateButton("Brew Potion (6s)", function()
+            if getGlove() == "Alchemist" and game.Players.LocalPlayer.Character:FindFirstChild("entered") ~= nil then
+                for i = 1, #Recipes[getgenv().selectedPotion] do
+                    game.ReplicatedStorage:WaitForChild("AlchemistEvent"):FireServer(unpack({"AddItem", Recipes[getgenv().selectedPotion][i]}))
+                    task.wait(.25)
+                    game.ReplicatedStorage:WaitForChild("AlchemistEvent"):FireServer(unpack({"MixItem", Recipes[getgenv().selectedPotion][i]}))
+                    task.wait(.1)
+                    if deb == false then
+                        deb = true
+                        game.ReplicatedStorage:WaitForChild("AlchemistEvent"):FireServer(unpack({"BrewPotion"}))
+                        task.wait(6)
+                        deb = false
+                    else
+                        print("you are on cooldown bud, chill..")
+                    end
+                end
+            end
+        end)
+    --]]
 
     local autoEnter = Perks2:CreateToggle("Auto Enter Arena", function(bool)
         autoJoin = bool
@@ -635,15 +639,15 @@ if game.PlaceId == 6403373529 or game
             end)
     end)
     
-    local discordTag = Credits1:CreateButton("anakinn#3568", function()
+    local discordTag = Credits1:CreateButton("anakinn3568", function()
         if setclipboard then 
-            setclipboard("anakinn#3568")   
+            setclipboard("anakinn3568")   
         end
     end)
     
-    local discordTag2 = Credits2:CreateButton("anakinn#3568", function()       
+    local discordTag2 = Credits2:CreateButton("anakinn3568", function()       
         if setclipboard then           
-            setclipboard("anakinn#3568")          
+            setclipboard("anakinn3568")          
         end  
     end)
     
