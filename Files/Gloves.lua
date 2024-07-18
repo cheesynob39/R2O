@@ -64,7 +64,6 @@
     ["Speedrun"] = game.ReplicatedStorage.Speedrunhit,
     ["Mail"] = game.ReplicatedStorage.MailHit,
     ["Golden"] = game.ReplicatedStorage.GoldenHit,
-    ["Cheeky"] = game.ReplicatedStorage.CheekyHit,
     ["Reaper"] = game.ReplicatedStorage.ReaperHit,
     ["Defense"] = game.ReplicatedStorage.DefenseHit,
     ["Killstreak"] = game.ReplicatedStorage.KSHit,
